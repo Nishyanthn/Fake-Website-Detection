@@ -1,7 +1,34 @@
-<h1 align="center">🔶🔸 Fake Website Detection🔸🔶</h1>
-<h3 align="center">🔴The Fake Website Detection System assesses URL legitimacy using a blend of heuristics and machine learning. It generates lookalike URLs for comparison, checks each for domain age, SSL certification, VirusTotal history, and analyzes web content similarity to detect imitation. A Random Forest Classifier provides a final legitimacy score.</h3>
+<h1 align="center"> ⚠️ Fake Website Detection 💻❗</h1>
+<h3 align="left">
+🔴The Fake Website Detection System is a robust application designed to assess the legitimacy of websites by analyzing various indicators of authenticity. This system is particularly useful for users who wish to verify the safety of URLs they encounter, either through a comprehensive scan of suspicious variants of a known URL or through a direct analysis of a potentially suspicious URL provided by the user. The application combines several detection techniques, leveraging both real-time web data and machine learning models to deliver accurate results.
 
-<h3 align="left">Connect with me:</h3>
+Key Features and Methods:
+URL Generation and Suspicious URL Scanning:
+
+🔴Typo-Squatting and Homoglyph Variations: Upon receiving an original URL, the system generates a list of similar-looking URLs using typos, homoglyphs, and different TLDs (Top-Level Domains). This step is useful for detecting potential phishing attempts where malicious websites use URLs resembling legitimate ones.
+Live URL Detection: Each generated URL is tested to see if it is live on the internet, filtering out inactive URLs and focusing the scan on potentially active threats.
+Domain Age Check:
+
+🔴The domain age is retrieved to verify the credibility of the website. Generally, legitimate businesses have older domains, whereas malicious websites tend to be relatively new. This feature helps in identifying potentially risky domains based on their creation dates.
+SSL Certificate Validation:
+
+🔴The system checks if a valid SSL certificate is present, which is crucial for website security. Websites without SSL certificates or with expired/invalid certificates may pose a higher risk, as legitimate sites generally prioritize SSL security.
+VirusTotal API Integration:
+
+🔴Using the VirusTotal API, the system scans the provided URL against a vast database of known malicious sites. If the URL is flagged by VirusTotal, it provides an indication of previous reports of suspicious activity related to that domain.
+Content-Based Similarity Scoring via Web Scraping:
+
+🔴The application scrapes the HTML content of both the original and the suspicious URLs and calculates a similarity score using content comparison algorithms. This score indicates how closely a suspicious URL mirrors the content of the original website, which can help identify sites that imitate legitimate pages for phishing.
+Machine Learning (ML) Model Prediction:
+
+🔴A trained Random Forest Classifier model is incorporated to further evaluate the legitimacy of the website. The ML model uses extracted features (such as domain age, SSL presence, and VirusTotal findings) to predict whether a URL is likely to be legitimate or fake. This predictive analysis is based on historical data of legitimate and fake websites, enabling a more refined classification.
+Two-Step User Flow:
+
+🔴The system has two main modes:
+Scan Mode: Takes an original URL as input, generates multiple suspicious variations, and evaluates each for legitimacy, displaying the results in a detailed report.
+Direct URL Validation Mode: Allows users to enter a URL they suspect might be malicious. This mode bypasses the URL generation step and directly runs all the tests on the provided URL.</h3>
+
+
 <p align="left">
 </p>
 
