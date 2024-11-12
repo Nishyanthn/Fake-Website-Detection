@@ -1,0 +1,116 @@
+/* HomePage2.css */
+
+/* Styling the container */
+.home-page2 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-page2 h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Input field styling */
+  .inputField {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  .inputField:focus {
+    border-color: #007bff;
+  }
+  
+  /* Button styling */
+  .test-button,
+  .run-model-button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .test-button:hover,
+  .run-model-button:hover {
+    background-color: #218838;
+  }
+  
+  .test-button:disabled,
+  .run-model-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Results container */
+  .results {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .results h3 {
+    font-size: 24px;
+    color: #007bff;
+  }
+  
+  .result-item {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .result-item strong {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .result-item p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* Loading spinner */
+  .loading-circle {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Prediction result styling */
+  .prediction-result {
+    margin-top: 20px;
+  }
+  
+  .prediction-result h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+  }
+  

@@ -1,0 +1,55 @@
+/* src/App.css */
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* Loading spinner styles */
+#loading {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+/* Progress bar styles */
+.progress-bar {
+  height: 20px;
+}
+
+table th, table td {
+  text-align: center;
+}
+
+/* Row colors for detection result */
+.table-success {
+  background-color: #24a342;
+}
+
+.table-danger {
+  background-color: #b33a45;
+}

@@ -1,0 +1,48 @@
+/* HomePage.css */
+.front-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .main-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .container {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  
+  .heading {
+    font-size: 1.5em;
+    margin: 20px 0;
+  }
+  
+  .scanButton, .mlButton {
+    padding: 15px 30px;
+    margin: 15px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  .scanButton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+  }
+  
+  .mlButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+  }
+  
+  .scanButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .mlButton:hover {
+    background-color: #218838;
+  }
+  

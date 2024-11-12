@@ -1,0 +1,292 @@
+/* Overall page styling */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top to avoid cut-off */
+    min-height: 100vh; /* Use min-height to allow scrolling if needed */
+    animation: fadeIn 1s ease-in;
+}
+
+/* Title styling */
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #e74c3c;
+    margin-top: 4rem; /* Adds extra space at the top to prevent cut-off */
+    margin-bottom: 2rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Container styling */
+.container {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transform: scale(0.9);
+    animation: scaleUp 0.6s ease-out forwards;
+}
+
+/* Input field styling */
+.inputField {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    width: 100%;
+    background-color: #333;
+    color: #e0e0e0;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.inputField:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+/* Button styling */
+.runButton {
+    padding: 1rem 2rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.runButton:hover {
+    background-color: #c0392b;
+}
+
+/* Loading text */
+.loading {
+    font-size: 1rem;
+    color: #aaa;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* URL List styling */
+.urlList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* URL Item styling */
+.urlItem {
+    margin-bottom: 1rem;
+    background-color: #333; /* Dark gray */
+    padding: 1rem;
+    border-radius: 5px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-in-out forwards; /* Fade-in and slide-up effect for each URL */
+    animation-delay: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between URL and button */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* Button styling for "Start Testing" */
+.startTestingButton {
+    padding: 0.5rem 1rem;
+    background-color: #e74c3c; /* Red button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem; /* Adds spacing above button if it wraps */
+}
+
+.startTestingButton:hover {
+    background-color: #c0392b;
+}
+
+/* Center button below the URL item on smaller screens */
+@media (max-width: 480px) {
+    .urlItem {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center-align items */
+    }
+
+    .startTestingButton {
+        margin-top: 0.5rem; /* Spacing from URL text */
+    }
+}
+
+/* Scrollbar styling */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+    background-color: #2c2c2c;
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+    background-color: #e74c3c;
+    border-radius: 10px;
+    border: 2px solid #2c2c2c;
+}
+
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
+    background-color: #c0392b;
+}
+
+html, body {
+    scrollbar-width: thin;
+    scrollbar-color: #e74c3c #2c2c2c;
+}
+
+/* Styling for the Suspicious URLs section */
+.liveUrls {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #2c2c2c;
+    border-radius: 5px;
+    animation: slideIn 0.8s ease-out;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.liveUrls::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.liveUrls::-webkit-scrollbar-track {
+    background-color: #2c2c2c;
+    border-radius: 10px;
+}
+
+.liveUrls::-webkit-scrollbar-thumb {
+    background-color: #e74c3c;
+    border-radius: 10px;
+    border: 2px solid #2c2c2c;
+}
+
+.liveUrls::-webkit-scrollbar-thumb:hover {
+    background-color: #c0392b;
+}
+
+.liveUrls {
+    scrollbar-width: thin;
+    scrollbar-color: #e74c3c #2c2c2c;
+}
+
+/* Loading circle */
+.loading-circle {
+    border: 6px solid #333; /* Dark gray border */
+    border-top: 6px solid #e74c3c; /* Red top border to create spinning effect */
+    border-radius: 50%; /* Makes it a circle */
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite; /* Spin animation */
+    margin: 1rem auto; /* Center it horizontally */
+}
+
+/* Spin animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        width: 90%;
+    }
+    .main-title {
+        font-size: 2.5rem;
+    }
+    .runButton, .inputField {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+    }
+    .loading {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+        width: 95%;
+    }
+    .main-title {
+        font-size: 2rem;
+    }
+    .runButton, .inputField {
+        font-size: 0.8rem;
+        padding: 0.7rem 1rem;
+    }
+    .loading {
+        font-size: 0.8rem;
+    }
+}
