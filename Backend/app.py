@@ -191,15 +191,15 @@ def check_domain_age(url):
   #*first page**************** 
 @app.route('/generate-urls', methods=['POST'])
 def generate_urls():
+    # Ensure you are parsing JSON correctly
     original_url = request.json.get('url')
-    
+
     if not original_url:
         return jsonify({'error': 'No URL provided'}), 400
 
     # Generate suspicious URLs and check if they are live
     live_urls = generate_suspicious_urls(original_url)
-    
-    return jsonify({'live_urls': live_urls})    
+    return jsonify({'live_urls': live_urls})   
 
 
 
@@ -207,30 +207,31 @@ def generate_urls():
 
 @app.route('/test-url', methods=['POST'])
 def test_url():
-
-    url = request.json.get('url')
-    api_key = 'yecebd0e42fb5c562d7c56a6ed329d046036e79c07258ec9e9b99dc8f9a2ea2y'
+    nurl = request.json.get('testUrl')
+    ourl = request.json.get('url')
+    import os
+    api_key = os.getenv("API_KEY")
     results = {}
 
     # Check VirusTotal report
-    positives, total = get_virustotal_report(url, api_key)
+    positives, total = get_virustotal_report(nurl, api_key)
     if positives is not None and total is not None:
         results['virus_total'] = f"Flagged {positives}/{total} times on VirusTotal."
     else:
         results['virus_total'] = "No VirusTotal report available."
 
     # Domain age check
-    domain_age_result = check_domain_age(url)
+    domain_age_result = check_domain_age(nurl)
     results['domain_age'] = domain_age_result
 
     # SSL certificate validation
-    ssl_result = validate_ssl_certificate(url)
+    ssl_result = validate_ssl_certificate(nurl)
     results['ssl_certificate'] = ssl_result
 
     # Web scraping check (similarity score)
-    original_html = scrape_url(url)
+    original_html = scrape_url(ourl)
     log_function_start("scrape_url (suspicious_html)")
-    suspicious_html = scrape_url(url)
+    suspicious_html = scrape_url(nurl)
 
     similarity_score = calculate_similarity(original_html, suspicious_html)
     results['web_scraping'] = f"Similarity score: {similarity_score:.2f}%"
@@ -252,9 +253,64 @@ def predict_url():
 
     # Make a prediction
     prediction = rf_classifier.predict(features_df)
-    prediction_label = 'The website might be fake' if prediction[0] == 0 else 'The website is legitimate'
+    prediction_label = 0 if prediction[0] == 0 else 1
 
     return jsonify({'prediction': prediction_label})
+
+@app.route('/fake-url-test', methods=['POST'])
+def fake_test():
+
+    url = request.json.get('url')
+    import os
+    api_key = os.getenv("API_KEY")
+
+    results = {}
+
+
+    # Check VirusTotal report
+    positives, total = get_virustotal_report(url, api_key)
+    if positives is not None and total is not None:
+        results['virus_total'] = f"Flagged {positives}/{total} times on VirusTotal."
+    else:
+        results['virus_total'] = "No VirusTotal report available."
+
+    # Domain age check
+    domain_age_result = check_domain_age(url)
+    results['domain_age'] = domain_age_result
+
+    # SSL certificate validation
+    ssl_result = validate_ssl_certificate(url)
+    results['ssl_certificate'] = ssl_result
+    log_function_start("End Program")
+    return jsonify(results)
+
+
+@app.route('/scrape-url', methods=['POST'])
+def web_scrape_url():
+    nurl = request.json.get('furl')
+    ourl = request.json.get('ourl')
+    results = {}
+
+    # Web scraping check (similarity score)
+    original_html = scrape_url(ourl)
+    log_function_start("scrape_url (suspicious_html)")
+    suspicious_html = scrape_url(nurl)
+
+    # Check if either original_html or suspicious_html is None
+    if original_html is None or suspicious_html is None:
+        results['web_scraping'] = "Unable to retrieve content from one or both URLs."
+    else:
+        similarity_score = calculate_similarity(original_html, suspicious_html)
+        results['web_scraping'] = f"Similarity score: {similarity_score:.2f}%"
+
+    log_function_start("End Program")
+    return jsonify(results)
+
+    # similarity_score = calculate_similarity(original_html, suspicious_html)
+    # results['web_scraping'] = f"Similarity score: {similarity_score:.2f}%"
+    log_function_start("End Program")
+    return jsonify(results)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
