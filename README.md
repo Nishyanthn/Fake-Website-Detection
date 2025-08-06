@@ -23,7 +23,9 @@ Each generated URL can then be analyzed using:<br/>
 🔴Web scraping for similarity comparison.<br/>
 These features ensure comprehensive URL analysis and detection for safe browsing and security evaluation.<br/>
 
+<h3 align = "left"> 3. Full-Stack Implementation🔧: </h3>
 
+This project follows a full-stack architecture to deliver an interactive and responsive user experience. The frontend is developed using React.js, providing a dynamic interface that allows users to input URLs, view results, and navigate across pages with ease. Styling is handled through external CSS, ensuring a clean and user-friendly layout. The backend is powered by Flask, which manages all server-side operations including URL analysis, web scraping, and machine learning predictions. Communication between the frontend and backend is facilitated through RESTful APIs, enabling seamless data exchange and real-time updates. This architecture ensures scalability, modularity, and efficient handling of complex detection workflows.
 
 
 
